@@ -10,10 +10,11 @@ class InmuebleController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $datosIn = Inmueble::all();
-        return response()->json($datosIn);
+        return response()->json($datosIn); 
     }
     /**
      * Store a newly created resource in storage.
