@@ -3,6 +3,8 @@
 use App\Http\Controllers\ClientesBloqueadosController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TipoUsuarioController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\InmuebleController;
 use App\Models\Clientes_Bloqueados;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
@@ -54,3 +56,9 @@ Route::get('/buscarCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::cl
 Route::post('crearCB', [ClientesBloqueadosController::class, 'darBaja']);
 Route::delete('/borrarCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class, 'eliminar']);
 Route::post('/updateCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class,'darAlta']);
+//Inmueble
+Route::get('indexIn', [InmuebleController::class, 'index']);
+Route::get('/buscarIn/{idInmueble}', [InmuebleController::class,'verID']);
+Route::post('crearIn', [InmuebleController::class, 'crear']);
+Route::delete('/borrarIn/{idInmueble}', [InmuebleController::class, 'eliminar']);
+Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);

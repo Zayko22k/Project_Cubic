@@ -42,7 +42,6 @@ class UsuarioController extends Controller
         $datosUS->save();
         return response()->json($request);
     }
-
     public function verID($idUsuario)
     {
         $datosUS = new Usuario();

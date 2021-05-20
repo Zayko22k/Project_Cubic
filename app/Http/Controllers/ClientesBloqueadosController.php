@@ -7,7 +7,6 @@ use App\Models\Clientes_Bloqueados;
 
 class ClientesBloqueadosController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
