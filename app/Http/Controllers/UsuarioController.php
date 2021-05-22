@@ -15,11 +15,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $datosUS = Usuario::all();
-        return response()->json([
-            "Estado" => true,
-            "Mensaje" => "Lista Tipos de Usuario",
-            "data" => $datosUS
-        ]);
+        return response()->json($datosUS); 
     }
     /**
      * Store a newly created resource in storage.

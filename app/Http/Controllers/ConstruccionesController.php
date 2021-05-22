@@ -1,22 +1,21 @@
-<?php
-
+<?php 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Servicio;
+use App\Construcciones;
 
-class ServicioController extends Controller
-{
+class ConstruccionesController extends Controller{
 
-    /**
+  /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        $datosSE = Servicio::all();
-        return response()->json($datosSE); 
+        $datosC = Construcciones::all();
+        return response()->json($datosC); 
     }
     /**
      * Store a newly created resource in storage.
@@ -26,18 +25,18 @@ class ServicioController extends Controller
      */
     public function crear(Request $request)
     {
-        $datosSE = new Servicio();
-        $datosSE->nombre = $request->nombre;
-        $datosSE->precio = $request->precio;
-        $datosSE->save();
+        $datosC = new Construcciones();
+        $datosC->nomConstr = $request->nomConstr;
+        $datosC->TipoConstruccion_idTipoConstruccion  = $request->TipoConstruccion_idTipoConstruccion;
+        $datosC->save();
         return response()->json($request);
     }
 
-    public function verID($idServicio)
+    public function verID($idConstrucciones)
     {
-        $datosSE = new Servicio();
-        $datosSE = $datosSE->find($idServicio);
-        return response()->json($datosSE);
+        $datosC = new Construcciones();
+        $datosEn = $datosC->find($idConstrucciones);
+        return response()->json($datosEn);
     }
     /**
      * Update the specified resource in storage.
@@ -46,15 +45,14 @@ class ServicioController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function modificar(Request $request, $idServicio)
+    public function modificar(Request $request, $idConstrucciones)
     {
 
-        $datosSE = Servicio::find($idServicio);
-        if ($request->input('nombre') || $request->input('precio')) {
-            $datosSE->nombre = $request->input('nombre');
-            $datosSE->precio = $request->input('precio');
+        $datosC = Construcciones::find($idConstrucciones);
+        if ($request->input('nomConstr')) {
+            $datosC->nomConstr = $request->input('nomConstr');
         }
-        $datosSE->save();
+        $datosC->save();
 
         return response()->json("Registro Actualizado");
     }
@@ -64,11 +62,11 @@ class ServicioController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($idServicio)
+    public function eliminar($idConstrucciones)
     {
 
-        $datosSE = Servicio::find($idServicio);
-        $datosSE->delete();
+        $datosC = Construcciones::find($idConstrucciones);
+        $datosC->delete();
         return response()->json("Registro Borrado");
     }
 }

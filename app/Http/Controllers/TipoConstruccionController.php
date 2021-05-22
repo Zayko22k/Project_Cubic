@@ -12,15 +12,11 @@ class TipoConstruccionController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $datosTP = TipoConstruccion::all();
-        return response()->json([
-            "Estado" => true,
-            "Mensaje" => "Lista de Servicios",
-            "data" => $datosSE
-        ]);
-    }
+        public function index()
+        {
+            $datosTP = TipoConstruccion::all();
+            return response()->json($datosTP); 
+        }
     /**
      * Store a newly created resource in storage.
      *

@@ -6,6 +6,7 @@ use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\InmuebleController;
 use App\Http\Controllers\TipoConstruccionController;
+use App\Http\Controllers\ConstruccionesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -63,7 +64,13 @@ Route::delete('/borrarIn/{idInmueble}', [InmuebleController::class, 'eliminar'])
 Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);
 //Tipo de Construccion
 Route::get('indexTP', [TipoConstruccionController::class, 'index']);
-Route::get('/buscartp/{idTipoConstruccion}', [TipoConstruccionController::class,'verID']);
+Route::get('/buscarTP/{idTipoConstruccion}', [TipoConstruccionController::class,'verID']);
 Route::post('crearTP', [TipoConstruccionController::class, 'crear']);
 Route::delete('/borrarTP/{idTipoConstruccion}', [TipoConstruccionController::class, 'eliminar']);
 Route::post('/updateTP/{idTipoConstruccion}', [TipoConstruccionController::class,'modificar']);
+//Construcciones
+Route::get('indexC', [ConstruccionesController::class, 'index']);
+Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verID']);
+Route::post('crearC', [ConstruccionesController::class, 'crear']);
+Route::delete('/borrarC/{idConstrucciones}', [ConstruccionesController::class, 'eliminar']);
+Route::post('/updateC/{idConstrucciones}', [ConstruccionesController::class,'modificar']);

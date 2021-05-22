@@ -24,11 +24,7 @@ class ClientesBloqueadosController extends Controller
             ->get();
 
 
-        return response()->json([
-            "Estado" => true,
-            "Mensaje" => "Lista Clientes bloqueados",
-            "data" => $datosCB
-        ]);
+            return response()->json($datosCB); 
     }
     /**
      * Store a newly created resource in storage.
