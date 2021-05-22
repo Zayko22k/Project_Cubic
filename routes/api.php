@@ -71,6 +71,7 @@ Route::post('/updateTP/{idTipoConstruccion}', [TipoConstruccionController::class
 //Construcciones
 Route::get('indexC', [ConstruccionesController::class, 'index']);
 Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verID']);
+Route::get('/indexCFK/{idTipoConstruccion}', [ConstruccionesController::class, 'verIDTP']);
 Route::post('crearC', [ConstruccionesController::class, 'crear']);
 Route::delete('/borrarC/{idConstrucciones}', [ConstruccionesController::class, 'eliminar']);
 Route::post('/updateC/{idConstrucciones}', [ConstruccionesController::class,'modificar']);

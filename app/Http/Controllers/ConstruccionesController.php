@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Construcciones;
+use App\Models\TipoConstruccion;
 
 class ConstruccionesController extends Controller{
 
@@ -41,6 +42,13 @@ class ConstruccionesController extends Controller{
         $datosC = new Construcciones();
         $datosEn = $datosC->find($idConstrucciones);
         return response()->json($datosEn);
+    }
+    public function verIDTP($idTipoConstruccion)
+    {
+        $datosC = new Construcciones();
+        $datosEn = $datosC->find($idTipoConstruccion);
+        return response()->json($datosEn);
+
     }
     /**
      * Update the specified resource in storage.
