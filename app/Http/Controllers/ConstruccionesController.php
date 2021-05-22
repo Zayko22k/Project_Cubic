@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Construcciones;
+use App\Models\Construcciones;
 
 class ConstruccionesController extends Controller{
 
@@ -14,7 +14,11 @@ class ConstruccionesController extends Controller{
     
     public function index()
     {
-        $datosC = Construcciones::all();
+        $datosC = Construcciones::select(
+        'construcciones.nomConstr',
+        'tipoconstruccion.nomTipoCons')
+        ->join('tipoconstruccion','construcciones.idConstrucciones', '=', 'tipoconstruccion.idTipoConstruccion')
+        ->get();
         return response()->json($datosC); 
     }
     /**
