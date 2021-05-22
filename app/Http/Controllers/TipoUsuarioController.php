@@ -15,8 +15,8 @@ class TipoUsuarioController extends Controller
      */
     public function index()
     {
-        $datosTP = TipoUsuario::all();
-        return response()->json($datosTP);
+        $datosTU = TipoUsuario::all();
+        return response()->json($datosTU);
     }
     /**
      * Store a newly created resource in storage.
@@ -26,16 +26,16 @@ class TipoUsuarioController extends Controller
      */
     public function crear(Request $request)
     {
-        $datosTP = new TipoUsuario();
-        $datosTP->tipo = $request->tipo;
-        $datosTP->save();
+        $datosTU = new TipoUsuario();
+        $datosTU->tipo = $request->tipo;
+        $datosTU->save();
         return response()->json($request);
     }
 
     public function verID($idTipoUsuario)
     {
-        $datosTP = new TipoUsuario();
-        $datosEn = $datosTP->find($idTipoUsuario);
+        $datosTU = new TipoUsuario();
+        $datosEn = $datosTU->find($idTipoUsuario);
         return response()->json($datosEn);
     }
     /**
@@ -48,11 +48,11 @@ class TipoUsuarioController extends Controller
     public function modificar(Request $request, $idTipoUsuario)
     {
 
-        $datosTP = TipoUsuario::find($idTipoUsuario);
+        $datosTU = TipoUsuario::find($idTipoUsuario);
         if ($request->input('tipo')) {
-            $datosTP->tipo = $request->input('tipo');
+            $datosTU->tipo = $request->input('tipo');
         }
-        $datosTP->save();
+        $datosTU->save();
 
         return response()->json("Registro Actualizado");
     }
@@ -65,8 +65,8 @@ class TipoUsuarioController extends Controller
     public function eliminar($idTipoUsuario)
     {
 
-        $datosTP = TipoUsuario::find($idTipoUsuario);
-        $datosTP->delete();
+        $datosTU = TipoUsuario::find($idTipoUsuario);
+        $datosTU->delete();
         return response()->json("Registro Borrado");
     }
 }

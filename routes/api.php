@@ -5,8 +5,7 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\InmuebleController;
-use App\Models\Clientes_Bloqueados;
-use App\Models\Servicio;
+use App\Http\Controllers\TipoConstruccionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,11 +32,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
 });
 //tipos de usuario
-Route::get('indexTP', [TipoUsuarioController::class, 'index']);
-Route::get('/buscarTP/{idTipoUsuario}', [TipoUsuarioController::class,'verID']);
-Route::post('crearTP', [TipoUsuarioController::class, 'crear']);
-Route::delete('/borrarTP/{idTipoUsuario}', [TipoUsuarioController::class, 'eliminar']);
-Route::post('/updateTP/{idTipoUsuario}', [TipoUsuarioController::class,'modificar']);
+Route::get('indexTU', [TipoUsuarioController::class, 'index']);
+Route::get('/buscarTU/{idTipoUsuario}', [TipoUsuarioController::class,'verID']);
+Route::post('crearTU', [TipoUsuarioController::class, 'crear']);
+Route::delete('/borrarTU/{idTipoUsuario}', [TipoUsuarioController::class, 'eliminar']);
+Route::post('/updateTU/{idTipoUsuario}', [TipoUsuarioController::class,'modificar']);
 //Usuario //Admin app
 Route::get('indexUS', [UsuarioController::class, 'index']);
 Route::get('/buscarUS/{idUsuario}', [UsuarioController::class,'verID']);
@@ -62,3 +61,9 @@ Route::get('/buscarIn/{idInmueble}', [InmuebleController::class,'verID']);
 Route::post('crearIn', [InmuebleController::class, 'crear']);
 Route::delete('/borrarIn/{idInmueble}', [InmuebleController::class, 'eliminar']);
 Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);
+//Tipo de Construccion
+Route::get('indexTP', [TipoConstruccionController::class, 'index']);
+Route::get('/buscartp/{idTipoConstruccion}', [TipoConstruccionController::class,'verID']);
+Route::post('crearTP', [TipoConstruccionController::class, 'crear']);
+Route::delete('/borrarTP/{idTipoConstruccion}', [TipoConstruccionController::class, 'eliminar']);
+Route::post('/updateTP/{idTipoConstruccion}', [TipoConstruccionController::class,'modificar']);
