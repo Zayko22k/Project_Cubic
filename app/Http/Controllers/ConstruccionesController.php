@@ -43,13 +43,6 @@ class ConstruccionesController extends Controller{
         $datosEn = $datosC->find($idConstrucciones);
         return response()->json($datosEn);
     }
-    public function verIDTP($idTipoConstruccion)
-    {
-        $datosC = new Construcciones();
-        $datosEn = $datosC->find($idTipoConstruccion);
-        return response()->json($datosEn);
-
-    }
     /**
      * Update the specified resource in storage.
      *

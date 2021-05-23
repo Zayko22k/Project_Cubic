@@ -38,6 +38,7 @@ Route::get('/buscarTU/{idTipoUsuario}', [TipoUsuarioController::class,'verID']);
 Route::post('crearTU', [TipoUsuarioController::class, 'crear']);
 Route::delete('/borrarTU/{idTipoUsuario}', [TipoUsuarioController::class, 'eliminar']);
 Route::post('/updateTU/{idTipoUsuario}', [TipoUsuarioController::class,'modificar']);
+Route::resource('tipousuario', UsuarioController::class);
 //Usuario //Admin app
 Route::get('indexUS', [UsuarioController::class, 'index']);
 Route::get('/buscarUS/{idUsuario}', [UsuarioController::class,'verID']);
@@ -63,15 +64,14 @@ Route::post('crearIn', [InmuebleController::class, 'crear']);
 Route::delete('/borrarIn/{idInmueble}', [InmuebleController::class, 'eliminar']);
 Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);
 //Tipo de Construccion
-Route::get('indexTP', [TipoConstruccionController::class, 'index']);
-Route::get('/buscarTP/{idTipoConstruccion}', [TipoConstruccionController::class,'verID']);
-Route::post('crearTP', [TipoConstruccionController::class, 'crear']);
-Route::delete('/borrarTP/{idTipoConstruccion}', [TipoConstruccionController::class, 'eliminar']);
-Route::post('/updateTP/{idTipoConstruccion}', [TipoConstruccionController::class,'modificar']);
+Route::get('indexTC', [TipoConstruccionController::class, 'index']);
+Route::get('/buscarTC/{idTipoConstruccion}', [TipoConstruccionController::class,'verID']);
+Route::post('crearTC', [TipoConstruccionController::class, 'crear']);
+Route::delete('/borrarTC/{idTipoConstruccion}', [TipoConstruccionController::class, 'eliminar']);
+Route::post('/updateTC/{idTipoConstruccion}', [TipoConstruccionController::class,'modificar']);
 //Construcciones
 Route::get('indexC', [ConstruccionesController::class, 'index']);
 Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verID']);
-Route::get('/indexCFK/{idTipoConstruccion}', [ConstruccionesController::class, 'verIDTP']);
 Route::post('crearC', [ConstruccionesController::class, 'crear']);
 Route::delete('/borrarC/{idConstrucciones}', [ConstruccionesController::class, 'eliminar']);
 Route::post('/updateC/{idConstrucciones}', [ConstruccionesController::class,'modificar']);

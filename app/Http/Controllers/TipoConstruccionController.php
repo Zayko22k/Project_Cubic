@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\TipoConstruccion;
+use App\Models\TipoConstruccion;
 
 class TipoConstruccionController extends Controller{
 
