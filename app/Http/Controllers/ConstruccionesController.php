@@ -15,7 +15,14 @@ class ConstruccionesController extends Controller{
     
     public function index()
     {
-        $datosC = Construcciones::select(
+     
+
+        $datosC = Construcciones::all();
+
+        return response()->json($datosC);
+    }
+    public function IndexJoin(){
+   $datosC = Construcciones::select(
         'construcciones.nomConstr',
         'tipoconstruccion.nomTipoCons')
         ->join('tipoconstruccion','construcciones.idConstrucciones', '=', 'tipoconstruccion.idTipoConstruccion')

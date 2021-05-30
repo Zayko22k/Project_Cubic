@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ClientesBloqueadosController;
 use App\Http\Controllers\ServicioController;
-use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\InmuebleController;
 use App\Http\Controllers\TipoConstruccionController;
@@ -32,13 +31,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('user','App\Http\Controllers\UserController@getAuthenticatedUser');
 
 });
-//tipos de usuario
-Route::get('indexTU', [TipoUsuarioController::class, 'index']);
-Route::get('/buscarTU/{idTipoUsuario}', [TipoUsuarioController::class,'verID']);
-Route::post('crearTU', [TipoUsuarioController::class, 'crear']);
-Route::delete('/borrarTU/{idTipoUsuario}', [TipoUsuarioController::class, 'eliminar']);
-Route::post('/updateTU/{idTipoUsuario}', [TipoUsuarioController::class,'modificar']);
-Route::resource('tipousuario', UsuarioController::class);
 //Usuario //Admin app
 Route::get('indexUS', [UsuarioController::class, 'index']);
 Route::get('/buscarUS/{idUsuario}', [UsuarioController::class,'verID']);
