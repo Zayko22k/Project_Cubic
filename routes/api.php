@@ -39,7 +39,12 @@ Route::post('crearUS', [UsuarioController::class, 'crear']);
 Route::delete('/borrarUS/{idUsuario}', [UsuarioController::class, 'eliminar']);
 Route::post('/updateUS/{idUsuario}', [UsuarioController::class,'modificar']);
 Route::post('loginUS', [UsuarioController::class, 'authenticate']);
-
+//Tipo Usuario
+Route::get('indexTU', [UsuarioController::class, 'index']);
+Route::get('/buscarTU/{idTipoUsuario}', [UsuarioController::class,'verID']);
+Route::post('crearTU', [UsuarioController::class, 'crear']);
+Route::delete('/borrarTU/{idTIpoUsuario}', [UsuarioController::class, 'eliminar']);
+Route::post('/updateTU/{idTipoUsuario}', [UsuarioController::class,'modificar']);
 //Servicio
 Route::get('indexSE', [ServicioController::class, 'index']);
 Route::get('/buscarSE/{idServicio}', [ServicioController::class,'verID']);
