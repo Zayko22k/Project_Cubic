@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ClientesBloqueadosController;
 use App\Http\Controllers\ServicioController;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\InmuebleController;
 use App\Http\Controllers\TipoConstruccionController;
 use App\Http\Controllers\ConstruccionesController;
@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-//User(Admin BD)
+//User
 Route::post('register', 'App\Http\Controllers\UserController@register');
 Route::post('login', 'App\Http\Controllers\UserController@authenticate');
 Route::group(['middleware' => ['jwt.verify']], function() {
@@ -31,20 +31,12 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('user','App\Http\Controllers\UserController@getAuthenticatedUser');
 
 });
-//Usuario
-Route::get('loginUsuario',[UsuarioController::class, 'loginUsuario']);
-Route::get('indexUS', [UsuarioController::class, 'index']);
-Route::get('/buscarUS/{idUsuario}', [UsuarioController::class,'verID']);
-Route::post('crearUS', [UsuarioController::class, 'crear']);
-Route::delete('/borrarUS/{idUsuario}', [UsuarioController::class, 'eliminar']);
-Route::post('/updateUS/{idUsuario}', [UsuarioController::class,'modificar']);
-Route::post('loginUS', [UsuarioController::class, 'authenticate']);
 //Tipo Usuario
-Route::get('indexTU', [UsuarioController::class, 'index']);
-Route::get('/buscarTU/{idTipoUsuario}', [UsuarioController::class,'verID']);
-Route::post('crearTU', [UsuarioController::class, 'crear']);
-Route::delete('/borrarTU/{idTIpoUsuario}', [UsuarioController::class, 'eliminar']);
-Route::post('/updateTU/{idTipoUsuario}', [UsuarioController::class,'modificar']);
+Route::get('indexTU', [TipoUsuarioController::class, 'index']);
+Route::get('/buscarTU/{idTipoUsuario}', [TipoUsuarioController::class,'verID']);
+Route::post('crearTU', [TipoUsuarioController::class, 'crear']);
+Route::delete('/borrarTU/{idTIpoUsuario}', [TipoUsuarioController::class, 'eliminar']);
+Route::post('/updateTU/{idTipoUsuario}', [TipoUsuarioController::class,'modificar']);
 //Servicio
 Route::get('indexSE', [ServicioController::class, 'index']);
 Route::get('/buscarSE/{idServicio}', [ServicioController::class,'verID']);
@@ -75,3 +67,9 @@ Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verI
 Route::post('crearC', [ConstruccionesController::class, 'crear']);
 Route::delete('/borrarC/{idConstrucciones}', [ConstruccionesController::class, 'eliminar']);
 Route::post('/updateC/{idConstrucciones}', [ConstruccionesController::class,'modificar']);
+//Asistencia
+Route::get('indexA', [AsistenciaController::class, 'index']);
+Route::get('/buscarA/{idAsistencia}', [AsistenciaController::class,'verID']);
+Route::post('crearA', [AsistenciaController::class, 'crear']);
+Route::delete('/borrarA/{idAsistencia}', [AsistenciaController::class, 'eliminar']);
+Route::post('/updateA/{idAsistencia}', [AsistenciaController::class,'modificar']);

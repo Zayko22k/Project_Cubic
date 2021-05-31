@@ -36,8 +36,8 @@ class ServicioController extends Controller
     public function verID($idServicio)
     {
         $datosSE = new Servicio();
-        $datosSE = $datosSE->find($idServicio);
-        return response()->json($datosSE);
+        $datosEn = $datosSE->find($idServicio);
+        return response()->json($datosEn);
     }
     /**
      * Update the specified resource in storage.

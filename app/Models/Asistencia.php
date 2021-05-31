@@ -3,9 +3,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoUsuario extends Model{
-    protected $table = "tipousuario";
-    protected $primaryKey = "idTipoUsuario";
+class Asistencia extends Model{
+    protected $table = "asistencia";
+    protected $primaryKey = "idAsistencia";
     // protected $fillable = [];
 
      public $timestamps = false;

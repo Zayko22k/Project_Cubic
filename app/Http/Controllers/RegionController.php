@@ -2,19 +2,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TipoUsuario;
+use App\Models\Region;
 
-class TipoUsuarioController extends Controller{
-
-   /**
+class RegionController extends Controller{
+/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $datosTU = TipoUsuario::all();
-        return response()->json($datosTU); 
+        $datosR = Region::all();
+        return response()->json($datosR); 
     }
 /**
  * Store a newly created resource in storage.
@@ -24,16 +23,16 @@ class TipoUsuarioController extends Controller{
  */
 public function crear(Request $request)
 {
-    $datosTU = new TipoUsuario();
-    $datosTU->tipo = $request->tipo;
-    $datosTU->save();
+    $datosR = new Region();
+    $datosR->nomRegion = $request->nomRegion;
+    $datosR->save();
     return response()->json($request);
 }
 
-public function verID($idTipoUsuario)
+public function verID($idRegion)
 {
-   $datosTU = TipoUsuario::find($idTipoUsuario);
-    return response()->json($datosTU);
+    $datosR = Region::find($idRegion);
+    return response()->json($datosR);
 }
 /**
  * Update the specified resource in storage.
@@ -42,14 +41,14 @@ public function verID($idTipoUsuario)
  * @param  \App\Models\Project  $project
  * @return \Illuminate\Http\Response
  */
-public function modificar(Request $request, $idTipoUsuario)
+public function modificar(Request $request, $idRegion)
 {
 
-    $datosTU = TipoUsuario::find($idTipoUsuario);
-    if ($request->input('tipo')) {
-        $datosTU->tipo = $request->input('tipo');
+    $datosR = Region::find($idRegion);
+    if ($request->input('nomRegion')) {
+        $datosR->nomRegion = $request->input('nomRegion');
     }
-    $datosTU->save();
+    $datosR->save();
 
     return response()->json("Registro Actualizado");
 }
@@ -59,11 +58,11 @@ public function modificar(Request $request, $idTipoUsuario)
  * @param  \App\Models\Project  $project
  * @return \Illuminate\Http\Response
  */
-public function eliminar($idTipoUsuario)
+public function eliminar($idRegion)
 {
 
-    $datosTU = TipoUsuario::find($idTipoUsuario);
-    $datosTU->delete();
+    $datosR = Region::find($idRegion);
+    $datosR->delete();
     return response()->json("Registro Borrado");
 }
 }

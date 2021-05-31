@@ -44,8 +44,8 @@ class ClientesBloqueadosController extends Controller
     public function verID($idCliente_Bloqueados)
     {
         $datosCB = new Clientes_Bloqueados();
-        $datosCB = $datosCB->find($idCliente_Bloqueados);
-        return response()->json($datosCB);
+        $datosEn = $datosCB->find($idCliente_Bloqueados);
+        return response()->json($datosEn);
     }
     /**
      * Update the specified resource in storage.

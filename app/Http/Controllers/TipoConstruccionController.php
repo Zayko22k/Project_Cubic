@@ -34,8 +34,8 @@ class TipoConstruccionController extends Controller{
     public function verID($idTipoConstruccion)
     {
         $datosTP = new TipoConstruccion();
-        $datosTP = $datosTP->find($idTipoConstruccion);
-        return response()->json($datosTP);
+        $datosEn = $datosTP->find($idTipoConstruccion);
+        return response()->json($datosEn);
     }
     /**
      * Update the specified resource in storage.
