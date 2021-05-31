@@ -51,6 +51,12 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'apellidoP' => 'required|string| max:255',
+            'apellidoM' => 'required|string| max:255',
+            'telefono' => 'required|string| max:12',
+            'fecha_nacimiento' => 'required|date',
+            'tipousuario_idTipoUsuario' => 'required|int'
+           
         ]);
 
         if ($validator->fails()) {
@@ -61,6 +67,11 @@ class UserController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'apellidoP' => $request->get('apellidoP'),
+            'apellidoM' => $request->get('apellidoM'),
+            'telefono' => $request->get('telefono'),
+            'fecha_nacimiento' => $request->get('fecha_nacimiento'),
+            'tipousuario_idTipoUsuario' => $request->get('tipousuario_idTipoUsuario')
         ]);
 
         $token = FacadesJWTAuth::fromUser($user);

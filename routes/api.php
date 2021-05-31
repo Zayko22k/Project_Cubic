@@ -31,12 +31,15 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('user','App\Http\Controllers\UserController@getAuthenticatedUser');
 
 });
-//Usuario //Admin app
+//Usuario
+Route::get('loginUsuario',[UsuarioController::class, 'loginUsuario']);
 Route::get('indexUS', [UsuarioController::class, 'index']);
 Route::get('/buscarUS/{idUsuario}', [UsuarioController::class,'verID']);
 Route::post('crearUS', [UsuarioController::class, 'crear']);
 Route::delete('/borrarUS/{idUsuario}', [UsuarioController::class, 'eliminar']);
 Route::post('/updateUS/{idUsuario}', [UsuarioController::class,'modificar']);
+Route::post('loginUS', [UsuarioController::class, 'authenticate']);
+
 //Servicio
 Route::get('indexSE', [ServicioController::class, 'index']);
 Route::get('/buscarSE/{idServicio}', [ServicioController::class,'verID']);

@@ -47,7 +47,7 @@ class TipoConstruccionController extends Controller{
     public function modificar(Request $request, $idTipoConstruccion)
     {
 
-        $datosTP = TipoUsuario::find($idTipoConstruccion);
+        $datosTP = TipoConstruccion::find($idTipoConstruccion);
         if ($request->input('nomTipoCons')) {
             $datosTP->nomTipoCons = $request->input('nomTipoCons');
         }
@@ -64,7 +64,7 @@ class TipoConstruccionController extends Controller{
     public function eliminar($idTipoConstruccion)
     {
 
-        $datosTP = TipoUsuario::find($idTipoConstruccion);
+        $datosTP = TipoConstruccion::find($idTipoConstruccion);
         $datosTP->delete();
         return response()->json("Registro Borrado");
     }
