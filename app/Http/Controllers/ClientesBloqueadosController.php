@@ -15,12 +15,12 @@ class ClientesBloqueadosController extends Controller
     public function index()
     {
         $datosCB = Clientes_Bloqueados::select('cliente_bloqueados.idCliente_Bloqueados',
-        'cliente_bloqueados.razon',
-         'usuario.nombre',
-         'usuario.apellidoP',
-         'usuario.correo',
-         'usuario.telefono')
-            ->join('usuario', 'cliente_bloqueados.idCliente_Bloqueados', '=', 'usuario.idUsuario')
+        'cliente_bloqueados.bloqueado', 'cliente_bloqueados.users_id',
+         'users.name',
+         'users.email',
+         'users.apellidoP',
+         'users.apellidoM')
+            ->join('users', 'cliente_bloqueados.idCliente_Bloqueados', '=', 'users.id')
             ->get();
 
 
@@ -32,13 +32,13 @@ class ClientesBloqueadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function darBaja(Request $request)
+    public function crear(Request $request)
     {
         $datosCB = new Clientes_Bloqueados();
-        $datosCB->razon = $request->razon;
-        $datosCB->Usuario_idUsuario = $request->Usuario_idUsuario;
+        $datosCB->bloqueado = $request->bloqueado;
+        $datosCB->users_id = $request->users_id;
         $datosCB->save();
-        return response()->json("Este cliente se ha dado de baja");
+        return response()->json("Este cliente se ha ingresado correctamente");
     }
 
     public function verID($idCliente_Bloqueados)
@@ -46,6 +46,17 @@ class ClientesBloqueadosController extends Controller
         $datosCB = new Clientes_Bloqueados();
         $datosEn = $datosCB->find($idCliente_Bloqueados);
         return response()->json($datosEn);
+    }
+
+    public function validacion($users_id)
+    {
+        $datosCB = new Clientes_Bloqueados();
+        $datosEn = $datosCB->find($users_id);
+        if($datosEn->bloqueado == "1"){
+            return response()->json("Usuario no bloqueado");
+        } else if($datosEn->bloqueado == "0"){
+            return response()->json("Usuario bloqueado");
+        }
     }
     /**
      * Update the specified resource in storage.
@@ -59,11 +70,11 @@ class ClientesBloqueadosController extends Controller
 
         $datosCB = Clientes_Bloqueados::find($idCliente_Bloqueados);
         if (
-            $request->input('razon')
-            || $request->input('Usuario_idUsuario')
+            $request->input('bloqueado')
+            || $request->input('users_id')
         ) {
-            $datosCB->razon = $request->input('razon');
-            $datosCB->Usuario_idUsuario = $request->input('Usuario_idUsuario');
+            $datosCB->bloqueado = $request->input('bloqueado');
+            $datosCB->users_id = $request->input('users_id');
         }
         $datosCB->save();
 

@@ -62,8 +62,9 @@ Route::post('/updateCI/{idCiudad}', [CiudadController::class, 'modificar']);
 
 //Clientes_Bloqueados
 Route::get('indexCB', [ClientesBloqueadosController::class, 'index']);
+Route::get('valida/{users_id}', [ClientesBloqueadosController::class, 'validacion']);
 Route::get('/buscarCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class,'verID']);
-Route::post('crearCB', [ClientesBloqueadosController::class, 'darBaja']);
+Route::post('crearCB', [ClientesBloqueadosController::class, 'crear']);
 Route::delete('/borrarCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class, 'eliminar']);
 Route::post('/updateCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class,'darAlta']);
 

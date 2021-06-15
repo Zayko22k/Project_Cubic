@@ -25,6 +25,7 @@ class UserController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'No se pudo crear el token'], 500);
         }
+        
         return response()->json(compact('token'));
     }
 
@@ -41,7 +42,8 @@ class UserController extends Controller
         } catch (JWTException $e) {
             return response()->json(['token_absent'], $e->getCode());
         }
-        return response()->json(compact('user'));
+       
+        return response()->json($user);
     }
 
 
