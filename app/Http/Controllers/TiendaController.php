@@ -26,7 +26,6 @@ public function crear(Request $request)
 {
     $datosTi = new Tienda();
     $datosTi->nomTienda = $request->nomTienda;
-    $datosTi->Ciudad_idCiudad = $request->Ciudad_idCiudad;
     $datosTi->save();
     return response()->json($request);
 }
@@ -47,7 +46,7 @@ public function modificar(Request $request, $idTienda)
 {
 
     $datosTi = Tienda::find($idTienda);
-    if ($request->input('nomTienda') || $request->input('Ciudad_idCiudad')) {
+    if ($request->input('nomTienda')) {
 
         $datosTi->nomTienda = $request->input('nomTienda');
         $datosTi->Ciudad_idCiudad = $request->input('Ciudad_idCiudad');

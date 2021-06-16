@@ -24,8 +24,8 @@ class ArriendoController extends Controller{
 public function crear(Request $request)
 {
     $datosAR = new Arriendo();
-    $datosAR->tiempoSer = $request->tiempoSer;
-    $datosAR->total = $request->total;
+    $datosAR->FechaInicio = $request->FechaInicio;
+    $datosAR->FechaFin = $request->FechaFin;
     $datosAR->servicio_idServicio = $request->servicio_idServicio;
     $datosAR->tipopago_idTipoPago = $request->tipopago_idTipoPago;
     $datosAR->users_id = $request->users_id;
@@ -50,12 +50,10 @@ public function modificar(Request $request, $idArriendo)
 
     $datosAR = Arriendo::find($idArriendo);
     if ($request->input('tiempoSer') ||
-    $request->input('total' ||
     $request->input('servicio_idServicio') ||
     $request->input('tipopago_idTipoPago') ||
-    $request->input('users_id'))) {
+    $request->input('users_id')) {
         $datosAR->tiempoSer = $request->input('tiempoSer');
-        $datosAR->total = $request->input('total');
         $datosAR->servicio_idServicio = $request->input('servicio_idServicio');
         $datosAR->tipopago_idTipoPago = $request->input('tipopago_idTipoPago');
         $datosAR->users_id = $request->input('users_id');
