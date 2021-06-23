@@ -49,7 +49,7 @@ public function modificar(Request $request, $idTienda)
     if ($request->input('nomTienda')) {
 
         $datosTi->nomTienda = $request->input('nomTienda');
-        $datosTi->Ciudad_idCiudad = $request->input('Ciudad_idCiudad');
+        
     }
     $datosTi->save();
 

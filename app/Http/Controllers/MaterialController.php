@@ -25,9 +25,11 @@ public function crear(Request $request)
 {
     $datosM = new Material();
 
+    $datosM->imagenMaterial = $request->imagenMaterial;
     $datosM->nomMaterial = $request->nomMaterial;
-    $datosM->cantidad = $request->cantidad;
     $datosM->precio = $request->precio;
+    $datosM->despacho = $request->despacho;
+    $datosM->retiro = $request->retiro;
     $datosM->tienda_idTienda = $request->tienda_idTienda;
 
     $datosM->save();
@@ -50,12 +52,18 @@ public function modificar(Request $request, $idMaterial)
 {
 
     $datosM = Material::find($idMaterial);
-    if ($request->input('nomMaterial') || $request->input('cantidad')
-        || $request->input('precio') || $request->input('tienda_idTienda')) {
+    if ($request->input('imagenMaterial') ||
+        $request->input('nomMaterial') ||
+        $request->input('precio') ||
+        $request->input('despacho') ||
+        $request->input('retiro')  ||
+        $request->input('tienda_idTienda')) {
 
+        $datosM->imagenMaterial = $request->input('imagenMaterial');    
         $datosM->nomMaterial = $request->input('nomMaterial');    
-        $datosM->cantidad = $request->input('cantidad');
         $datosM->precio = $request->input('precio');
+        $datosM->despacho = $request->input('despacho');
+        $datosM->retiro = $request->input('retiro');
         $datosM->tienda_idTienda = $request->input('idTienda');
     }
     $datosM->save();

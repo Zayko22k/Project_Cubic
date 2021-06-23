@@ -8,6 +8,6 @@ class Arriendo extends Model{
     protected $primaryKey = "idArriendo";
         // protected $fillable = [];
 
-        public $timestamps = false;
+       
     
 }

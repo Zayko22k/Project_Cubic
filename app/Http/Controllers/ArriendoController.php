@@ -24,8 +24,8 @@ class ArriendoController extends Controller{
 public function crear(Request $request)
 {
     $datosAR = new Arriendo();
-    $datosAR->FechaInicio = $request->FechaInicio;
-    $datosAR->FechaFin = $request->FechaFin;
+    $datosAR->vencido = $request->vencido;
+    $datosAR->activo = $request->activo;
     $datosAR->servicio_idServicio = $request->servicio_idServicio;
     $datosAR->tipopago_idTipoPago = $request->tipopago_idTipoPago;
     $datosAR->users_id = $request->users_id;
@@ -38,6 +38,20 @@ public function verID($idArriendo)
    $datosAR = Arriendo::find($idArriendo);
     return response()->json($datosAR);
 }
+public function verId_User($users_id)
+{
+
+    $dato =Arriendo::select('arriendo.idArriendo',
+    'arriendo.created_at',
+    'arriendo.servicio_idServicio',
+    'servicio.nombre',
+    'servicio.precio')
+    ->join('servicio','servicio.idServicio', '=','arriendo.servicio_idServicio')
+    ->where('arriendo.users_id', '=', $users_id)
+    ->get();
+
+    return response()->json($dato);
+}
 /**
  * Update the specified resource in storage.
  *
@@ -49,11 +63,14 @@ public function modificar(Request $request, $idArriendo)
 {
 
     $datosAR = Arriendo::find($idArriendo);
-    if ($request->input('tiempoSer') ||
+    if ($request->input('vencido') ||
+    $request->input('activo') ||
     $request->input('servicio_idServicio') ||
     $request->input('tipopago_idTipoPago') ||
     $request->input('users_id')) {
-        $datosAR->tiempoSer = $request->input('tiempoSer');
+
+        $datosAR->vencido = $request->input('vencido');
+        $datosAR->activo = $request->input('activo');
         $datosAR->servicio_idServicio = $request->input('servicio_idServicio');
         $datosAR->tipopago_idTipoPago = $request->input('tipopago_idTipoPago');
         $datosAR->users_id = $request->input('users_id');

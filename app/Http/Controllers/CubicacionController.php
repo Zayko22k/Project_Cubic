@@ -30,6 +30,12 @@ public function crear(Request $request)
     $datosCU->ancho = $request->ancho;
     $datosCU->volumen = $request->volumen;
     $datosCU->m3 = $request->m3;
+    $datosCU->dosificacion = $request->dosificacion;
+    $datosCU->grava  = $request->grava;
+    $datosCU->arena = $request->arena;
+    $datosCU->agua = $request->agua;
+    $datosCU->largo = $request->largo;
+    $datosCU->cantidadSacos = $request->cantidadSacos;
     $datosCU->Inmueble_idInmueble = $request->Inmueble_idInmueble;
     $datosCU->Construcciones_idConstrucciones = $request->Construcciones_idConstrucciones;
 
@@ -58,6 +64,12 @@ public function modificar(Request $request, $idCubica)
     $request->input('ancho') ||
     $request->input('volumen') ||
     $request->input('m3') ||
+    $request->input('dosificacion') ||
+    $request->input('grava') ||
+    $request->input('arena') ||
+    $request->input('agua') ||
+    $request->input('largo') ||
+    $request->input('cantidadSacos') ||
     $request->input('Inmueble_idInmueble') ||
     $request->input('Construcciones_idConstrucciones')) {
 
@@ -66,6 +78,12 @@ public function modificar(Request $request, $idCubica)
         $datosCU->ancho = $request->input('ancho');
         $datosCU->volumen = $request->input('volumen');
         $datosCU->m3 = $request->input('m3');
+        $datosCU->dosificacion = $request->input('dosificacion');
+        $datosCU->grava = $request->input('grava');
+        $datosCU->arena = $request->input('arena');
+        $datosCU->agua = $request->input('agua');
+        $datosCU->largo = $request->input('largo');
+        $datosCU->cantidadSacos = $request->input('cantidadSacos');
         $datosCU->Inmueble_idInmueble = $request->input('Inmueble_idInmueble');
         $datosCU->Construcciones_idConstrucciones = $request->input('Construcciones_idConstrucciones');
     }

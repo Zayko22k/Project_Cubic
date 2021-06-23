@@ -25,10 +25,12 @@ class DetalleCotizacionController extends Controller{
 public function crear(Request $request)
 {
     $datosDC = new DetalleCotizacion();
+    $datosDC->nombreCoti = $request->nombreCoti;
+    $datosDC->total = $request->total;
+    $datosDC->totalDescuento = $request->totalDescuento;
     $datosDC->cubicacion_idCubica = $request->cubicacion_idCubica;
     $datosDC->material_idMaterial = $request->material_idMaterial;
     $datosDC->users_id = $request->users_id;
-    $datosDC->fecha_creacion = $request->fecha_creacion;
 
     $datosDC->save();
     return response()->json($request);
@@ -50,15 +52,18 @@ public function modificar(Request $request, $idDetalleCoti)
 {
 
     $datosDC = DetalleCotizacion::find($idDetalleCoti);
-    if ($request->input('cubicacion_idCubica') ||
+    if ($request->input('nombreCoti') ||
+    $request->input('total') ||
+    $request->input('totalDescuento') ||
+    $request->input('cubicacion_idCubica') ||
     $request->input('material_idMaterial') ||
-    $request->input('users_id') ||
-    $request->input('fecha_creacion')) {
-
+    $request->input('users_id')) {
+        $datosDC->nombreCoti =$request->input('nombreCoti');
+        $datosDC->total = $request->input('total');
+        $datosDC->totalDescuento = $request->input('totalDescuento');
         $datosDC->cubicacion_idCubica = $request->input('cubicacion_idCubica');
         $datosDC->material_idMaterial = $request->input('material_idMaterial');
         $datosDC->users_id = $request->input('users_id');
-        $datosDC->fecha_creacion = $request->input('fecha_creacion');
     }
     $datosDC->save();
 
@@ -72,7 +77,6 @@ public function modificar(Request $request, $idDetalleCoti)
  */
 public function eliminar($idDetalleCoti)
 {
-
     $datosDC = DetalleCotizacion::find($idDetalleCoti);
     $datosDC->delete();
     return response()->json("Registro Borrado");

@@ -27,7 +27,6 @@ public function crear(Request $request)
     $datosA = new Asistencia();
     $datosA->consulta = $request->consulta;
     $datosA->email = $request->email;
-    $datosA->fecha_creacion = $request->fecha_creacion;
     $datosA->users_id = $request->users_id;
     $datosA->Region_idRegion = $request->Region_idRegion;
     $datosA->save();
@@ -54,7 +53,6 @@ public function modificar(Request $request, $idAsistencia)
         || $request->input('users_id') || $request->input('Region_idRegion')) {
         $datosA->consulta = $request->input('consulta');
         $datosA->email = $request->input('email');
-        $datosA->fecha_creacion = $request->input('fecha_creacion');
         $datosA->users_id = $request->input('users_id');
         $datosA->Region_idRegion = $request->input('Region_idRegion');
     }

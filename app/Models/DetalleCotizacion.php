@@ -8,6 +8,5 @@ class DetalleCotizacion extends Model{
     protected $primaryKey = "idDetalleCoti";
     // protected $fillable = [];
 
-     public $timestamps = false;
-    
+  
 }

@@ -41,7 +41,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 //Arriendo
 Route::get('indexAr', [ArriendoController::class, 'index']);
-Route::get('/buscarAr/{idArriendo}', [ArriendoController::class,'verID']);
+Route::get('buscarAr/{idArriendo}', [ArriendoController::class,'verID']);
+Route::get('buscarxUser/{users_id}', [ArriendoController::class,'verId_User']);
 Route::post('crearAr', [ArriendoController::class, 'crear']);
 Route::delete('/borrarAr/{idArriendo}', [ArriendoController::class, 'eliminar']);
 Route::post('/updateAr/{idArriendo}', [ArriendoController::class,'modificar']);
@@ -119,7 +120,7 @@ Route::post('/updateSE/{idServicio}', [ServicioController::class,'modificar']);
 
 //Tienda
 Route::get('indexTienda', [TiendaController::class, 'index']);
-Route::get('/buscarTienda/{idTienda}', [TiendaController::class, 'verID']);
+Route::get('buscarTienda/{idTienda}', [TiendaController::class, 'verID']);
 Route::post('crearTienda', [TiendaController::class, 'crear']);
 Route::delete('/borrarTienda/{idTienda}', [TiendaController::class, 'eliminar']);
 Route::post('/updateTienda/{idTienda}', [TiendaController::class, 'modificar']);

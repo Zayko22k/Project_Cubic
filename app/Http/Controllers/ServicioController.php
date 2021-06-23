@@ -28,6 +28,7 @@ class ServicioController extends Controller
     {
         $datosSE = new Servicio();
         $datosSE->nombre = $request->nombre;
+        $datosSE->descripcion = $request->descripcion;
         $datosSE->precio = $request->precio;
         $datosSE->save();
         return response()->json($request);
@@ -50,8 +51,12 @@ class ServicioController extends Controller
     {
 
         $datosSE = Servicio::find($idServicio);
-        if ($request->input('nombre') || $request->input('precio')) {
+        if ($request->input('nombre') ||
+            $request->input('descripcion') ||
+            $request->input('precio')) {
+        
             $datosSE->nombre = $request->input('nombre');
+            $datosSE->descripcion = $request->input('descripcion');   
             $datosSE->precio = $request->input('precio');
         }
         $datosSE->save();
