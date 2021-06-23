@@ -8,6 +8,5 @@ class Asistencia extends Model{
     protected $primaryKey = "idAsistencia";
     // protected $fillable = [];
 
-     public $timestamps = false;
     
 }
