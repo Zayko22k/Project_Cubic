@@ -43,11 +43,13 @@ public function verId_User($users_id)
 
     $dato =Arriendo::select('arriendo.idArriendo',
     'arriendo.created_at',
+    'arriendo.vencido',
+    'arriendo.activo',
     'arriendo.servicio_idServicio',
     'servicio.nombre',
     'servicio.precio')
     ->join('servicio','servicio.idServicio', '=','arriendo.servicio_idServicio')
-    ->where('arriendo.users_id', '=', $users_id)
+    ->where('arriendo.users_id', '=', $users_id )
     ->get();
 
     return response()->json($dato);

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Material;
+
 class MaterialController extends Controller{
 
  /**
@@ -26,7 +27,9 @@ public function crear(Request $request)
     $datosM = new Material();
 
     $datosM->imagenMaterial = $request->imagenMaterial;
-    $datosM->nomMaterial = $request->nomMaterial;
+    $datosM->descripcionMaterial = $request->descripcionMaterial;
+    $datosM->marcaMaterial = $request->marcaMaterial;
+    $datosM->tituloMaterial = $request->tituloMaterial;
     $datosM->precio = $request->precio;
     $datosM->despacho = $request->despacho;
     $datosM->retiro = $request->retiro;
@@ -53,14 +56,18 @@ public function modificar(Request $request, $idMaterial)
 
     $datosM = Material::find($idMaterial);
     if ($request->input('imagenMaterial') ||
-        $request->input('nomMaterial') ||
+        $request->input('descripcionMaterial') ||
+        $request->input('marcaMaterial') ||
+        $request->input('tituloMaterial') ||
         $request->input('precio') ||
         $request->input('despacho') ||
         $request->input('retiro')  ||
         $request->input('tienda_idTienda')) {
 
         $datosM->imagenMaterial = $request->input('imagenMaterial');    
-        $datosM->nomMaterial = $request->input('nomMaterial');    
+        $datosM->descripcionMaterial = $request->input('descripcionMaterial');
+        $datosM->marcaMaterial = $request->input('marcaMaterial');
+        $datosM->tituloMaterial = $request->input('tituloMaterial');
         $datosM->precio = $request->input('precio');
         $datosM->despacho = $request->input('despacho');
         $datosM->retiro = $request->input('retiro');

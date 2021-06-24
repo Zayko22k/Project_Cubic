@@ -54,21 +54,6 @@ Route::post('crearA', [AsistenciaController::class, 'crear']);
 Route::delete('/borrarA/{idAsistencia}', [AsistenciaController::class, 'eliminar']);
 Route::post('/updateA/{idAsistencia}', [AsistenciaController::class,'modificar']);
 
-//Ciudad 
-Route::get('indexCI', [CiudadController::class, 'index']);
-Route::get('/buscarCI/{idCiudad}', [CiudadController::class,'verID']);
-Route::post('crearCI', [CiudadController::class, 'crear']);
-Route::delete('/borrarCI/{idCiudad}', [CiudadController::class, 'eliminar']);
-Route::post('/updateCI/{idCiudad}', [CiudadController::class, 'modificar']);
-
-//Clientes_Bloqueados
-Route::get('indexCB', [ClientesBloqueadosController::class, 'index']);
-Route::get('valida/{users_id}', [ClientesBloqueadosController::class, 'validacion']);
-Route::get('/buscarCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class,'verID']);
-Route::post('crearCB', [ClientesBloqueadosController::class, 'crear']);
-Route::delete('/borrarCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class, 'eliminar']);
-Route::post('/updateCB/{idCliente_Bloqueados}', [ClientesBloqueadosController::class,'darAlta']);
-
 //Construcciones
 Route::get('indexC', [ConstruccionesController::class, 'index']);
 Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verID']);
@@ -100,7 +85,7 @@ Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);
 //Material
 Route::get('indexM', [MaterialController::class, 'index']);
 Route::get('/buscarM/{idMaterial}', [MaterialController::class, 'verID']);
-Route::post('crearM', [MaterialController::class, 'crear']);
+Route::post('crearMa', [MaterialController::class, 'crear']);
 Route::delete('/borrarM/{idMaterial}', [MaterialController::class, 'eliminar']);
 Route::post('/updateM/{idMaterial}', [MaterialController::class, 'modificar']);
 
