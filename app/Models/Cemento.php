@@ -3,9 +3,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model{
-    protected $table = "material";
-    protected $primaryKey = "idMaterial";
+class Cemento extends Model{
+    protected $table = "cemento";
+    protected $primaryKey = "idCemento";
     // protected $fillable = [];
 
      public $timestamps = false;

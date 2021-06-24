@@ -3,7 +3,7 @@
 use App\Http\Controllers\ClientesBloqueadosController;
 use App\Http\Controllers\DetalleCotizacionController;
 use App\Http\Controllers\TipoPagoController;
-use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\CementoController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\CubicacionController;
@@ -53,7 +53,12 @@ Route::get('/buscarA/{idAsistencia}', [AsistenciaController::class,'verID']);
 Route::post('crearA', [AsistenciaController::class, 'crear']);
 Route::delete('/borrarA/{idAsistencia}', [AsistenciaController::class, 'eliminar']);
 Route::post('/updateA/{idAsistencia}', [AsistenciaController::class,'modificar']);
-
+//Cemento
+Route::get('indexM', [CementoController::class, 'index']);
+Route::get('/buscarM/{idCemento}', [CementoController::class, 'verID']);
+Route::post('crearMa', [CementoController::class, 'crear']);
+Route::delete('/borrarM/{idCemento}', [CementoController::class, 'eliminar']);
+Route::post('/updateM/{idCemento}', [CementoController::class, 'modificar']);
 //Construcciones
 Route::get('indexC', [ConstruccionesController::class, 'index']);
 Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verID']);
@@ -82,12 +87,7 @@ Route::post('crearIn', [InmuebleController::class, 'crear']);
 Route::delete('/borrarIn/{idInmueble}', [InmuebleController::class, 'eliminar']);
 Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);
 
-//Material
-Route::get('indexM', [MaterialController::class, 'index']);
-Route::get('/buscarM/{idMaterial}', [MaterialController::class, 'verID']);
-Route::post('crearMa', [MaterialController::class, 'crear']);
-Route::delete('/borrarM/{idMaterial}', [MaterialController::class, 'eliminar']);
-Route::post('/updateM/{idMaterial}', [MaterialController::class, 'modificar']);
+
 
 //Region
 Route::get('indexRe', [RegionController::class, 'index']);
