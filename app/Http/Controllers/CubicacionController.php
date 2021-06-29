@@ -40,7 +40,7 @@ public function crear(Request $request)
     $datosCU->Construcciones_idConstrucciones = $request->Construcciones_idConstrucciones;
 
     $datosCU->save();
-    return response()->json($request);
+    return response()->json($datosCU);
 }
 
 public function verID($idCubica)

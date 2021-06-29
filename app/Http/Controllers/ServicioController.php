@@ -27,11 +27,12 @@ class ServicioController extends Controller
     public function crear(Request $request)
     {
         $datosSE = new Servicio();
+        $datosSE->idServicio = $request->idServicio;
         $datosSE->nombre = $request->nombre;
         $datosSE->descripcion = $request->descripcion;
         $datosSE->precio = $request->precio;
         $datosSE->save();
-        return response()->json($request);
+        return response()->json($datosSE);
     }
 
     public function verID($idServicio)

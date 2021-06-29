@@ -51,7 +51,6 @@ public function verId_User($users_id)
     ->join('servicio','servicio.idServicio', '=','arriendo.servicio_idServicio')
     ->where('arriendo.users_id', '=', $users_id )
     ->get();
-
     return response()->json($dato);
 }
 /**

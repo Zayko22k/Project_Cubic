@@ -76,6 +76,8 @@ Route::post('/updateCubic/{idCubica}', [CubicacionController::class, 'modificar'
 //DetalleCotizacion
 Route::get('indexDT', [DetalleCotizacionController::class, 'index']);
 Route::get('/buscarDT/{idDetalleCoti}', [DetalleCotizacionController::class, 'verID']);
+Route::get('/buscarMicoti/{users_id}', [DetalleCotizacionController::class, 'verId_User']);
+Route::get('/buscarCoti/{keywords}', [DetalleCotizacionController::class, 'buscarCotizacion']);
 Route::post('crearDT', [DetalleCotizacionController::class, 'crear']);
 Route::delete('/borrarDT/{idDetalleCoti}', [DetalleCotizacionController::class, 'eliminar']);
 Route::post('/updateDT/{idDetalleCoti}', [DetalleCotizacionController::class, 'modificar']);

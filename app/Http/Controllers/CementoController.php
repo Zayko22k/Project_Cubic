@@ -28,14 +28,13 @@ public function crear(Request $request)
     $datosM->imagenCemento = $request->imagenCemento;
     $datosM->descripcionCemento = $request->descripcionCemento;
     $datosM->marcaCemento = $request->marcaCemento;
-    $datosM->tituloCemento = $request->tituloCemento;
     $datosM->precio = $request->precio;
     $datosM->despacho = $request->despacho;
     $datosM->retiro = $request->retiro;
     $datosM->tienda_idTienda = $request->tienda_idTienda;
 
     $datosM->save();
-    return response()->json($request);
+    return response()->json($datosM);
 }
 
 public function verID($idCemento)
@@ -57,7 +56,6 @@ public function modificar(Request $request, $idCemento)
     if ($request->input('imagenCemento') ||
         $request->input('descripcionCemento') ||
         $request->input('marcaCemento') ||
-        $request->input('tituloCemento') ||
         $request->input('precio') ||
         $request->input('despacho') ||
         $request->input('retiro')  ||
@@ -66,7 +64,6 @@ public function modificar(Request $request, $idCemento)
         $datosM->imagenCemento = $request->input('imagenCemento');    
         $datosM->descripcionCemento = $request->input('descripcionCemento');
         $datosM->marcaCemento = $request->input('marcaCemento');
-        $datosM->tituloCemento = $request->input('tituloCemento');
         $datosM->precio = $request->input('precio');
         $datosM->despacho = $request->input('despacho');
         $datosM->retiro = $request->input('retiro');
