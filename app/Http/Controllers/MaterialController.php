@@ -2,9 +2,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cemento;
+use App\Models\Material;
 
-class CementoController extends Controller{
+class MaterialController extends Controller{
 
  /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class CementoController extends Controller{
      */
     public function index()
     {
-        $datosM = Cemento::all();
+        $datosM = Material::all();
         return response()->json($datosM); 
     }
 /**
@@ -24,10 +24,10 @@ class CementoController extends Controller{
  */
 public function crear(Request $request)
 {
-    $datosM = new Cemento();
-    $datosM->imagenCemento = $request->imagenCemento;
-    $datosM->descripcionCemento = $request->descripcionCemento;
-    $datosM->marcaCemento = $request->marcaCemento;
+    $datosM = new Material();
+    $datosM->imagenMaterial = $request->imagenMaterial;
+    $datosM->descripcionMaterial = $request->descripcionMaterial;
+    $datosM->marcaMaterial = $request->marcaMaterial;
     $datosM->precio = $request->precio;
     $datosM->despacho = $request->despacho;
     $datosM->retiro = $request->retiro;
@@ -37,9 +37,9 @@ public function crear(Request $request)
     return response()->json($datosM);
 }
 
-public function verID($idCemento)
+public function verID($idMaterial)
 {
-   $datosM = Cemento::find($idCemento);
+   $datosM = Material::find($idMaterial);
     return response()->json($datosTU);
 }
 /**
@@ -49,21 +49,21 @@ public function verID($idCemento)
  * @param  \App\Models\Project  $project
  * @return \Illuminate\Http\Response
  */
-public function modificar(Request $request, $idCemento)
+public function modificar(Request $request, $idMaterial)
 {
 
     $datosM = Material::find($idMaterial);
-    if ($request->input('imagenCemento') ||
-        $request->input('descripcionCemento') ||
-        $request->input('marcaCemento') ||
+    if ($request->input('imagenMaterial') ||
+        $request->input('descripcionMaterial') ||
+        $request->input('marcaMaterial') ||
         $request->input('precio') ||
         $request->input('despacho') ||
         $request->input('retiro')  ||
         $request->input('tienda_idTienda')) {
 
-        $datosM->imagenCemento = $request->input('imagenCemento');    
-        $datosM->descripcionCemento = $request->input('descripcionCemento');
-        $datosM->marcaCemento = $request->input('marcaCemento');
+        $datosM->imagenMaterial = $request->input('imagenMaterial');    
+        $datosM->descripcionMaterial = $request->input('descripcionMaterial');
+        $datosM->marcaMaterial = $request->input('marcaMaterial');
         $datosM->precio = $request->input('precio');
         $datosM->despacho = $request->input('despacho');
         $datosM->retiro = $request->input('retiro');
@@ -79,9 +79,9 @@ public function modificar(Request $request, $idCemento)
  * @param  \App\Models\Project  $project
  * @return \Illuminate\Http\Response
  */
-public function eliminar($idCemento)
+public function eliminar($idMaterial)
 {
-    $datosM = Cemento::find($idCemento);
+    $datosM = Material::find($idMaterial);
     $datosM->delete();
     return response()->json("Registro Borrado");
 }

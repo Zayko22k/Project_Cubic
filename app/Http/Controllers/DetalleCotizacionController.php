@@ -29,7 +29,7 @@ public function crear(Request $request)
     $datosDC->total = $request->total;
     $datosDC->cubicacion_idCubica = $request->cubicacion_idCubica;
     $datosDC->users_id = $request->users_id;
-    $datosDC->cemento_idCemento = $request->cemento_idCemento;
+    $datosDC->material_idMaterial = $request->material_idMaterial;
   
 
     $datosDC->save();
@@ -56,12 +56,12 @@ public function modificar(Request $request, $idDetalleCoti)
     $request->input('total') ||
     $request->input('cubicacion_idCubica') ||
     $request->input('users_id') ||
-    $request->input('cemento_idCemento')) {
+    $request->input('material_idMaterial')) {
         $datosDC->nombreCoti =$request->input('nombreCoti');
         $datosDC->total = $request->input('total');
         $datosDC->cubicacion_idCubica = $request->input('cubicacion_idCubica');
         $datosDC->users_id = $request->input('users_id');
-        $datosDC->material_idMaterial = $request->input('cemento_idCemento');
+        $datosDC->material_idMaterial = $request->input('material_idMaterial');
     }
     $datosDC->save();
 
@@ -79,14 +79,13 @@ public function verId_User($users_id)
     'cubicacion.area',
     'cubicacion.profundidad',
     'cubicacion.ancho',
-    'cubicacion.volumen',
     'cubicacion.m3',
     'cubicacion.dosificacion',
     'cubicacion.grava',
     'cubicacion.arena',
     'cubicacion.agua',
     'cubicacion.largo',
-    'cubicacion.cantidadSacos',
+    'cubicacion.cantidad',
      //Inmueble
     'cubicacion.Inmueble_idInmueble',
     'inmueble.nomInmueble',
@@ -98,27 +97,32 @@ public function verId_User($users_id)
     'tipoconstruccion.nomTipoCons',
     //Usuario
     'detallecotizacion.users_id',
-    //Cemento
-    'detallecotizacion.cemento_idCemento',
-    'cemento.imagenCemento',
-    'cemento.descripcionCemento',
-    'cemento.marcaCemento',
-    'cemento.precio',
-    'cemento.despacho',
-    'cemento.retiro',
-    'cemento.tienda_idTienda',
+    //Material
+    'detallecotizacion.material_idMaterial',
+    'material.imagenMaterial',
+    'material.descripcionMaterial',
+    'material.marcaMaterial',
+    'material.precio',
+    'material.despacho',
+    'material.retiro',
+    'material.tienda_idTienda',
     'tienda.nomTienda')
      ->join('cubicacion','cubicacion.idCubica', '=','detallecotizacion.cubicacion_idCubica')
      ->join('inmueble','inmueble.idInmueble', '=','cubicacion.inmueble_idInmueble')
      ->join('construcciones','construcciones.idConstrucciones', '=','cubicacion.construcciones_idConstrucciones')
      ->join('tipoconstruccion','tipoconstruccion.idTipoConstruccion', '=','construcciones.TipoConstruccion_idTipoConstruccion')
-     ->join('cemento','cemento.idCemento', '=','detallecotizacion.cemento_idCemento')
-     ->join('tienda','tienda.idTienda', '=','cemento.tienda_idTienda')
+     ->join('material','material.idMaterial', '=','detallecotizacion.material_idMaterial')
+     ->join('tienda','tienda.idTienda', '=','material.tienda_idTienda')
     ->where('detallecotizacion.users_id', '=', $users_id )
     ->get();
-
-    return response()->json($dato);
+    if($dato->count() == 0){
+          return response()->json($dato);
+    }else{
+        return response()->json($dato);
+    
+    }
 }
+   
 
 public function buscarCotizacion($keywords){
 
@@ -131,14 +135,13 @@ public function buscarCotizacion($keywords){
     'cubicacion.area',
     'cubicacion.profundidad',
     'cubicacion.ancho',
-    'cubicacion.volumen',
     'cubicacion.m3',
     'cubicacion.dosificacion',
     'cubicacion.grava',
     'cubicacion.arena',
     'cubicacion.agua',
     'cubicacion.largo',
-    'cubicacion.cantidadSacos',
+    'cubicacion.cantidad',
      //Inmueble
     'cubicacion.Inmueble_idInmueble',
     'inmueble.nomInmueble',
@@ -150,27 +153,28 @@ public function buscarCotizacion($keywords){
     'tipoconstruccion.nomTipoCons',
     //Usuario
     'detallecotizacion.users_id',
-    //Cemento
-    'detallecotizacion.cemento_idCemento',
-    'cemento.imagenCemento',
-    'cemento.descripcionCemento',
-    'cemento.marcaCemento',
-    'cemento.precio',
-    'cemento.despacho',
-    'cemento.retiro',
-    'cemento.tienda_idTienda',
+    //Material
+    'detallecotizacion.material_idMaterial',
+    'material.imagenMaterial',
+    'material.descripcionMaterial',
+    'material.marcaMaterial',
+    'material.precio',
+    'material.despacho',
+    'material.retiro',
+    'material.tienda_idTienda',
     'tienda.nomTienda')
      ->join('cubicacion','cubicacion.idCubica', '=','detallecotizacion.cubicacion_idCubica')
      ->join('inmueble','inmueble.idInmueble', '=','cubicacion.inmueble_idInmueble')
      ->join('construcciones','construcciones.idConstrucciones', '=','cubicacion.construcciones_idConstrucciones')
      ->join('tipoconstruccion','tipoconstruccion.idTipoConstruccion', '=','construcciones.TipoConstruccion_idTipoConstruccion')
-     ->join('cemento','cemento.idCemento', '=','detallecotizacion.cemento_idCemento')
-     ->join('tienda','tienda.idTienda', '=','cemento.tienda_idTienda')
-    ->where('detallecotizacion.nombreCoti', 'LIKE', '%' .$keywords.'%')
+     ->join('material','material.idMaterial', '=','detallecotizacion.material_idMaterial')
+     ->join('tienda','tienda.idTienda', '=','material.tienda_idTienda')
+    ->where('detallecotizacion.users_id', '=', $users_id )
     ->get();
 
     return response()->json($dato);
 }
+
 /**
  * Remove the specified resource from storage.
  *
@@ -181,6 +185,6 @@ public function eliminar($idDetalleCoti)
 {
     $datosDC = DetalleCotizacion::find($idDetalleCoti);
     $datosDC->delete();
-    return response()->json("Registro Borrado");
+    return response()->json($datosDC);
 }
 }

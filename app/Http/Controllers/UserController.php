@@ -13,8 +13,21 @@ use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth as FacadesJWTAuth;
 
+
+
 class UserController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $user = User::all();
+        return response()->json($user); 
+    }
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');

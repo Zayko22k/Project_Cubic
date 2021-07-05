@@ -3,7 +3,7 @@
 use App\Http\Controllers\ClientesBloqueadosController;
 use App\Http\Controllers\DetalleCotizacionController;
 use App\Http\Controllers\TipoPagoController;
-use App\Http\Controllers\CementoController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\CubicacionController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\InmuebleController;
 use App\Http\Controllers\TipoConstruccionController;
 use App\Http\Controllers\ConstruccionesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 //User
+Route::get('indexUS', 'App\Http\Controllers\UserController@index');
 Route::post('register', 'App\Http\Controllers\UserController@register');
 Route::post('login', 'App\Http\Controllers\UserController@authenticate');
 Route::group(['middleware' => ['jwt.verify']], function() {
@@ -53,14 +55,10 @@ Route::get('/buscarA/{idAsistencia}', [AsistenciaController::class,'verID']);
 Route::post('crearA', [AsistenciaController::class, 'crear']);
 Route::delete('/borrarA/{idAsistencia}', [AsistenciaController::class, 'eliminar']);
 Route::post('/updateA/{idAsistencia}', [AsistenciaController::class,'modificar']);
-//Cemento
-Route::get('indexM', [CementoController::class, 'index']);
-Route::get('/buscarM/{idCemento}', [CementoController::class, 'verID']);
-Route::post('crearMa', [CementoController::class, 'crear']);
-Route::delete('/borrarM/{idCemento}', [CementoController::class, 'eliminar']);
-Route::post('/updateM/{idCemento}', [CementoController::class, 'modificar']);
+
 //Construcciones
 Route::get('indexC', [ConstruccionesController::class, 'index']);
+Route::get('indexSR/{idTipoConstruccion}', [ConstruccionesController::class, 'indexJoin']);
 Route::get('/buscarC/{idConstrucciones}', [ConstruccionesController::class,'verID']);
 Route::post('crearC', [ConstruccionesController::class, 'crear']);
 Route::delete('/borrarC/{idConstrucciones}', [ConstruccionesController::class, 'eliminar']);
@@ -88,8 +86,12 @@ Route::get('/buscarIn/{idInmueble}', [InmuebleController::class,'verID']);
 Route::post('crearIn', [InmuebleController::class, 'crear']);
 Route::delete('/borrarIn/{idInmueble}', [InmuebleController::class, 'eliminar']);
 Route::post('/updateIn/{idInmueble}', [InmuebleController::class,'modificar']);
-
-
+//Material
+Route::get('indexM', [MaterialController::class, 'index']);
+Route::get('/buscarM/{idMaterial}', [MaterialoController::class, 'verID']);
+Route::post('crearMa', [MaterialController::class, 'crear']);
+Route::delete('/borrarM/{idMaterial}', [MaterialoController::class, 'eliminar']);
+Route::post('/updateM/{idMaterial}', [MaterialController::class, 'modificar']);
 
 //Region
 Route::get('indexRe', [RegionController::class, 'index']);

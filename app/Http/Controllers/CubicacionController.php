@@ -28,14 +28,13 @@ public function crear(Request $request)
     $datosCU->area = $request->area;
     $datosCU->profundidad = $request->profundidad;
     $datosCU->ancho = $request->ancho;
-    $datosCU->volumen = $request->volumen;
     $datosCU->m3 = $request->m3;
     $datosCU->dosificacion = $request->dosificacion;
     $datosCU->grava  = $request->grava;
     $datosCU->arena = $request->arena;
     $datosCU->agua = $request->agua;
     $datosCU->largo = $request->largo;
-    $datosCU->cantidadSacos = $request->cantidadSacos;
+    $datosCU->cantidad = $request->cantidad;
     $datosCU->Inmueble_idInmueble = $request->Inmueble_idInmueble;
     $datosCU->Construcciones_idConstrucciones = $request->Construcciones_idConstrucciones;
 
@@ -62,28 +61,26 @@ public function modificar(Request $request, $idCubica)
     if ($request->input('area') ||
     $request->input('profundidad') ||
     $request->input('ancho') ||
-    $request->input('volumen') ||
     $request->input('m3') ||
     $request->input('dosificacion') ||
     $request->input('grava') ||
     $request->input('arena') ||
     $request->input('agua') ||
     $request->input('largo') ||
-    $request->input('cantidadSacos') ||
+    $request->input('cantidad') ||
     $request->input('Inmueble_idInmueble') ||
     $request->input('Construcciones_idConstrucciones')) {
 
         $datosCU->area = $request->input('area');
         $datosCU->profundidad = $request->input('profundidad');
         $datosCU->ancho = $request->input('ancho');
-        $datosCU->volumen = $request->input('volumen');
         $datosCU->m3 = $request->input('m3');
         $datosCU->dosificacion = $request->input('dosificacion');
         $datosCU->grava = $request->input('grava');
         $datosCU->arena = $request->input('arena');
         $datosCU->agua = $request->input('agua');
         $datosCU->largo = $request->input('largo');
-        $datosCU->cantidadSacos = $request->input('cantidadSacos');
+        $datosCU->cantidadS = $request->input('cantidad');
         $datosCU->Inmueble_idInmueble = $request->input('Inmueble_idInmueble');
         $datosCU->Construcciones_idConstrucciones = $request->input('Construcciones_idConstrucciones');
     }

@@ -21,11 +21,17 @@ class ConstruccionesController extends Controller{
 
         return response()->json($datosC);
     }
-    public function IndexJoin(){
+    public function IndexJoin($TipoConstruccion_idTipoConstruccion){
+        
    $datosC = Construcciones::select(
+       'construcciones.idConstrucciones',
         'construcciones.nomConstr',
+        'construcciones.TipoConstruccion_idTipoConstruccion',
         'tipoconstruccion.nomTipoCons')
-        ->join('tipoconstruccion','construcciones.idConstrucciones', '=', 'tipoconstruccion.idTipoConstruccion')
+        ->join('tipoconstruccion',
+         'tipoconstruccion.idTipoConstruccion', 
+         '=', 'construcciones.TipoConstruccion_idTipoConstruccion')
+        ->where('construcciones.TipoConstruccion_idTipoConstruccion', '=', $TipoConstruccion_idTipoConstruccion )
         ->get();
         return response()->json($datosC); 
     }
