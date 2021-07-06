@@ -93,6 +93,14 @@ public function eliminar($idArriendo)
     $datosAR->delete();
     return response()->json("Registro Borrado");
 }
+/**
+ * Busca usuario por id y guarda la fecha la compara
+ *  con la fecha de hoy si cumple el limite de dias
+ *  impuesto bloquea el arriendo del usuario.
+ * @param  \Illuminate\Http\Request  $request
+ * @param  \App\Models\Project  $project
+ * @return \Illuminate\Http\Response
+ */
 public function diferenciaDias(Request $request, $users_id){
 
     $fechaAntigua  = Arriendo::first()->created_at;
@@ -105,12 +113,13 @@ public function diferenciaDias(Request $request, $users_id){
   // return response()->json($fecha);
       
     $cantidadDias = $fecha->diffInDays(now());
-    if($cantidadDias == 13){
+    if($cantidadDias == 14){
         $datos->activo = $request = 0;
         $datos->vencido = $request = 1;
         $datos->save();
-        return response()->json("Usuario Bloqueado");
+        return response()->json(31);
     }
-    return response()->json($cantidadDias);
+    $cantidadD= 30 - $cantidadDias;
+    return response()->json($cantidadD);
 }
 }
