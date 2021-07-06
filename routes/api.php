@@ -43,6 +43,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 //Arriendo
 Route::get('indexAr', [ArriendoController::class, 'index']);
+Route::get('arriendoVence/{users_id}', [ArriendoController::class, 'diferenciaDias']);
 Route::get('buscarAr/{idArriendo}', [ArriendoController::class,'verID']);
 Route::get('buscarxUser/{users_id}', [ArriendoController::class,'verId_User']);
 Route::post('crearAr', [ArriendoController::class, 'crear']);

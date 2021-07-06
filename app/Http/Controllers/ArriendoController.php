@@ -89,8 +89,28 @@ public function modificar(Request $request, $idArriendo)
 public function eliminar($idArriendo)
 {
 
-    $datosAR = TipoUsuario::find($idArriendo);
+    $datosAR = Arriendo::find($idArriendo);
     $datosAR->delete();
     return response()->json("Registro Borrado");
+}
+public function diferenciaDias(Request $request, $users_id){
+
+    $fechaAntigua  = Arriendo::first()->created_at;
+
+    $datos =Arriendo::select('arriendo.created_at')
+    ->where('arriendo.activo', '=', '1','AND', 'arriendo.users_id', '=', $users_id )
+    ->get();
+    $fecha = $datos[0]->created_at;
+   
+  // return response()->json($fecha);
+      
+    $cantidadDias = $fecha->diffInDays(now());
+    if($cantidadDias == 13){
+        $datos->activo = $request = 0;
+        $datos->vencido = $request = 1;
+        $datos->save();
+        return response()->json("Usuario Bloqueado");
+    }
+    return response()->json($cantidadDias);
 }
 }
