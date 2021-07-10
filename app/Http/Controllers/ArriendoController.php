@@ -103,7 +103,7 @@ public function eliminar($idArriendo)
  */
 public function diferenciaDias(Request $request, $users_id){
 
-    $fechaAntigua  = Arriendo::first()->created_at;
+   // $fechaAntigua  = Arriendo::first()->created_at;
 
     $datos =Arriendo::select('arriendo.created_at')
     ->where('arriendo.activo', '=', '1','AND', 'arriendo.users_id', '=', $users_id )

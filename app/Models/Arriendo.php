@@ -8,6 +8,4 @@ class Arriendo extends Model{
     protected $primaryKey = "idArriendo";
         // protected $fillable = [];
 
-       
-    
 }

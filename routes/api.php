@@ -11,8 +11,10 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\CiudadController;
 use App\Http\Controllers\ArriendoController;
 use App\Http\Controllers\TipoUsuarioController;
+use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\InmuebleController;
 use App\Http\Controllers\TipoConstruccionController;
+use App\Http\Controllers\RespuestAsistenciaController;
 use App\Http\Controllers\ConstruccionesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -100,6 +102,13 @@ Route::get('/buscarRe/{idRegion}', [RegionController::class,'verID']);
 Route::post('crearRe', [RegionController::class, 'crear']);
 Route::delete('/borrarRe/{idRegion}', [RegionController::class, 'eliminar']);
 Route::post('/updateRe/{idRegion}', [RegionController::class, 'modificar']);
+
+//RespuestaController
+Route::get('indexRA', [RespuestAsistenciaController::class, 'index']);
+Route::get('/buscarRA/{idRespuestAsistencia}', [RespuestAsistenciaController::class,'verID']);
+Route::post('crearRA', [RespuestAsistenciaController::class, 'crear']);
+Route::delete('/borrarRA/{idRespuestAsitencia}', [RespuestAsistenciaController::class, 'eliminar']);
+Route::post('/updateRA/{idRespuestAsistencia}', [RespuestAsistenciaController::class, 'modificar']);
 
 //Servicio
 Route::get('indexSE', [ServicioController::class, 'index']);
