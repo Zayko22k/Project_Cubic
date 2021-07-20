@@ -41,7 +41,7 @@ Route::post('login', 'App\Http\Controllers\UserController@authenticate');
 Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::post('user','App\Http\Controllers\UserController@getAuthenticatedUser');
-
+  
 });
 //Arriendo
 Route::get('indexAr', [ArriendoController::class, 'index']);
@@ -78,7 +78,6 @@ Route::post('/updateCubic/{idCubica}', [CubicacionController::class, 'modificar'
 Route::get('indexDT', [DetalleCotizacionController::class, 'index']);
 Route::get('/buscarDT/{idDetalleCoti}', [DetalleCotizacionController::class, 'verID']);
 Route::get('/buscarMicoti/{users_id}', [DetalleCotizacionController::class, 'verId_User']);
-Route::get('/buscarCoti/{keywords}', [DetalleCotizacionController::class, 'buscarCotizacion']);
 Route::post('crearDT', [DetalleCotizacionController::class, 'crear']);
 Route::delete('/borrarDT/{idDetalleCoti}', [DetalleCotizacionController::class, 'eliminar']);
 Route::post('/updateDT/{idDetalleCoti}', [DetalleCotizacionController::class, 'modificar']);
@@ -105,10 +104,12 @@ Route::post('/updateRe/{idRegion}', [RegionController::class, 'modificar']);
 
 //RespuestaController
 Route::get('indexRA', [RespuestAsistenciaController::class, 'index']);
-Route::get('/buscarRA/{idRespuestAsistencia}', [RespuestAsistenciaController::class,'verID']);
+Route::get('buscarRA/{idRespuestAsistencia}', [RespuestAsistenciaController::class,'verID']);
+Route::get('ver/{users_id}', [RespuestAsistenciaController::class,'verIDxUser']);
 Route::post('crearRA', [RespuestAsistenciaController::class, 'crear']);
 Route::delete('/borrarRA/{idRespuestAsitencia}', [RespuestAsistenciaController::class, 'eliminar']);
 Route::post('/updateRA/{idRespuestAsistencia}', [RespuestAsistenciaController::class, 'modificar']);
+Route::post('/vistoRA/{idRespuestAsistencia}', [RespuestAsistenciaController::class, 'vistos']);
 
 //Servicio
 Route::get('indexSE', [ServicioController::class, 'index']);

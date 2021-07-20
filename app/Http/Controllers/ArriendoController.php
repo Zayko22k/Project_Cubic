@@ -105,21 +105,30 @@ public function diferenciaDias(Request $request, $users_id){
 
    // $fechaAntigua  = Arriendo::first()->created_at;
 
-    $datos =Arriendo::select('arriendo.created_at')
-    ->where('arriendo.activo', '=', '1','AND', 'arriendo.users_id', '=', $users_id )
-    ->get();
-    $fecha = $datos[0]->created_at;
+    $datos =Arriendo::find($users_id)
+    ->select('arriendo.idArriendo',
+    'arriendo.created_at',
+    'arriendo.activo',
+    'arriendo.vencido')
+    ->where('arriendo.activo', '=', 1,'AND', 'arriendo.users_id', '=', $users_id )
+    ->first();
+    $fecha = $datos->created_at;
    
   // return response()->json($fecha);
       
     $cantidadDias = $fecha->diffInDays(now());
-    if($cantidadDias == 14){
-        $datos->activo = $request = 0;
-        $datos->vencido = $request = 1;
-        $datos->save();
-        return response()->json(31);
-    }
     $cantidadD= 30 - $cantidadDias;
-    return response()->json($cantidadD);
+    if($cantidadD == 0){
+       
+        $datos->vencido = $datos->vencido=1;
+        $datos->activo = $request->activo = 0;
+        $datos->save();
+        
+        return response()->json(31);
+    }else{
+        return response()->json($cantidadD);
+    }
+   
+   
 }
 }
